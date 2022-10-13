@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "4xVEKhvArUSlDg6gxIH04TF7SbwOVIknJGxfOHBc/QUYtecbSfmcO8bBfpBSuA6yOpDiS2Sznra8wyhiF0EdXg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0-rc.2.22472.3\\microsoft.extensions.dependencyinjection.7.0.0-rc.2.22472.3.nupkg.sha512",
+    "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-rc.2.22472.3\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-rc.2.22472.3.nupkg.sha512"
+  ],
+  "logs": []
+}
