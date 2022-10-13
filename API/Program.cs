@@ -1,12 +1,27 @@
+using Application.Validators;
+using AutoMapper;
+using Domain;
+using FluentValidation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
+//Setting up the mapper 
+var mapper = new MapperConfiguration(config =>
+{
+    //Any time we add another DTO we have to map it, so we add it down below :)
+    config.CreateMap<PostBoxDTO, Box>();
+}).CreateMapper();
+builder.Services.AddSingleton(mapper);
+
+//Registering Application layer and infrastructure layer with Depencency resolver
 Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
 Infrastructure.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 

@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "jhGUE/CZiB8/3V6wMiX1WVhI3qBJS/iwuuL/u5UlfjMwgLCkwXo6t7UsqPU4rMMcpQkl7ONxf2ElqL1UMeuJDA==",
+  "dgSpecHash": "glyp12SxJEIMIcUFUI10hNvGhzssbdRsTYO0FAjJbvptA0te93YABz5H/NnTDXi0+oGOdKbz3xp+cTmNj0UPjQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Sergio M\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Sergio M\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512",
+    "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0-rc.2.22472.3\\microsoft.extensions.dependencyinjection.7.0.0-rc.2.22472.3.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-rc.2.22472.3\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-rc.2.22472.3.nupkg.sha512"
   ],
