@@ -27,7 +27,7 @@ public class ApplicationServiceBox : IBoxService
     public Box CreateNewBox(PostBoxDTO dto)
     {
         var validation = _postValidator.Validate(dto);
-        if (validation.IsValid)
+        if (!validation.IsValid)
         {
             throw new ValidationException(validation.ToString());
         }

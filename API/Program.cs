@@ -25,6 +25,9 @@ builder.Services.AddSingleton(mapper);
 Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
 Infrastructure.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 
+//adding the cors to the builder
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,7 +35,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    //This line allow us to send httpRequest from our frontend when is in development
+    app.UseCors(options =>
+    {
+        options.AllowAnyHeader();
+        options.AllowAnyOrigin();
+        options.AllowAnyMethod();
+    });
 }
+
 
 app.UseHttpsRedirection();
 
