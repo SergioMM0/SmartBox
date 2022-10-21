@@ -21,6 +21,10 @@ public class BoxController : ControllerBase
     public List<Box> GetAllProducts()
     {
         return _boxService.GetAllBoxes();
+        foreach (Box box in _boxService.GetAllBoxes())
+        {
+            Console.WriteLine(box.Length);
+        }
     }
 
     [HttpPost]

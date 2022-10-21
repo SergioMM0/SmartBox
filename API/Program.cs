@@ -2,6 +2,7 @@ using Application.Validators;
 using AutoMapper;
 using Domain;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,11 @@ var mapper = new MapperConfiguration(config =>
     config.CreateMap<PostBoxDTO, Box>();
 }).CreateMapper();
 builder.Services.AddSingleton(mapper);
+
+//Conn to the DB
+builder.Services.AddDbContext<DbContext>(options => options.UseSqlite(
+    "Data source=db.db"
+));
 
 //Registering Application layer and infrastructure layer with Depencency resolver
 Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);

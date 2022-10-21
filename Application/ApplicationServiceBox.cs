@@ -12,6 +12,7 @@ public class ApplicationServiceBox : IBoxService
     private IBoxRepository _boxRepository;
     private IMapper _mapper;
     private IValidator<PostBoxDTO> _postValidator;
+    private bool test = false;
     
     public ApplicationServiceBox(IBoxRepository repository, IMapper mapper, IValidator<PostBoxDTO> postValidator)
     {
@@ -22,6 +23,11 @@ public class ApplicationServiceBox : IBoxService
 
     public List<Box> GetAllBoxes()
     {
+        if (test)
+        {
+            return _boxRepository.GetAllBoxesSample();
+        }
+
         return _boxRepository.GetAllBoxes();
     }
     public Box CreateNewBox(PostBoxDTO dto)
@@ -32,5 +38,10 @@ public class ApplicationServiceBox : IBoxService
             throw new ValidationException(validation.ToString());
         }
         return _boxRepository.CreateNewBox(_mapper.Map<Box>(dto));
+    }
+
+    public List<Box> getAllBoxesFromDb()
+    {
+        return _boxRepository.GetAllBoxes();
     }
 }
