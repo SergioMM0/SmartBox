@@ -1,4 +1,4 @@
-namespace Application.Validators;
+namespace Application.DTOs;
 
 public class PostBoxDTO
 {   

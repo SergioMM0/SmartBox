@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\API.csproj": {}
+    "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\API.csproj": {
+    "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\API.csproj",
         "packagesPath": "C:\\Users\\Sergio M\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\obj\\",
+        "outputPath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sergio M\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[11.2.2, )"

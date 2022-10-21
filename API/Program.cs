@@ -1,7 +1,8 @@
-using Application.Validators;
+using Application.DTOs;
 using AutoMapper;
 using Domain;
 using FluentValidation;
+using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,13 +24,19 @@ var mapper = new MapperConfiguration(config =>
 builder.Services.AddSingleton(mapper);
 
 //Conn to the DB
-builder.Services.AddDbContext<DbContext>(options => options.UseSqlite(
+builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     "Data source=db.db"
 ));
 
 //Registering Application layer and infrastructure layer with Depencency resolver
-Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
-Infrastructure.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
+Application
+    .DependencyResolver
+    .DependencyResolverService
+    .RegisterApplicationLayer(builder.Services);
+Infrastructure
+    .DependencyResolver
+    .DependencyResolverService
+    .RegisterInfrastructureLayer(builder.Services);
 
 //adding the cors to the builder
 builder.Services.AddCors();

@@ -1,39 +1,30 @@
 ﻿using Application.Interfaces;
 using Domain;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
 
 public class BoxRepository : IBoxRepository
 {
-    //Testing without dbCon
-    public List<Box> GetAllBoxesSample()
-    {
-        return new List<Box>() { new Box(1,2.1,2,3, "miscojones",3)};
-    }
-
-    public Box CreateNewBox(Box box)
-    {
-        return box;
-    }
-
-    //Actual repository with connection to the db
-
-    //public DbContextOptions<DbContext> _opts;
-    private readonly DbContext _context;
-    public BoxRepository(DbContext context)
+    private readonly BoxDbContext _context;
+    public BoxRepository(BoxDbContext context)
     {
         _context = context;
-
-        /*
-        _opts = new DbContextOptionsBuilder<DbContext>()
-            .UseSqlite("Data source=../Infrastructure/db.db").Options;
-            */
+    }
+    public void RebuildDb()
+    {
+        _context.Database.EnsureDeleted();
+        _context.Database.EnsureCreated();
     }
 
     public List<Box> GetAllBoxes()
     {
-        return _context.Box.ToList();
+        return _context.BoxTable.ToList();
+    }
+
+    public Box CreateNewBox(Box box)
+    {
+        _context.BoxTable.Add(box);
+        _context.SaveChanges();
+        return box;
     }
 }

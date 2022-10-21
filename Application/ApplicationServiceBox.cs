@@ -1,33 +1,40 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Application.Validators;
 using AutoMapper;
 using Domain;
 using Domain.Interfaces;
 using FluentValidation;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Application;
 
 public class ApplicationServiceBox : IBoxService
 {
-    private IBoxRepository _boxRepository;
-    private IMapper _mapper;
-    private IValidator<PostBoxDTO> _postValidator;
-    private bool test = false;
-    
-    public ApplicationServiceBox(IBoxRepository repository, IMapper mapper, IValidator<PostBoxDTO> postValidator)
+    private readonly IBoxRepository _boxRepository;
+    private readonly IMapper _mapper;
+    private readonly IValidator<PostBoxDTO> _postValidator;
+    private readonly IValidator<Box> _boxValidator;
+
+    public ApplicationServiceBox(
+        IBoxRepository repository,
+        IMapper mapper, 
+        IValidator<PostBoxDTO> postValidator,
+        IValidator<Box> boxValidator)
     {
         _mapper = mapper;
         _boxRepository = repository;
         _postValidator = postValidator;
+        _boxValidator = boxValidator;
+    }
+
+    public void RebuildDb()
+    {
+        _boxRepository.RebuildDb();
     }
 
     public List<Box> GetAllBoxes()
     {
-        if (test)
-        {
-            return _boxRepository.GetAllBoxesSample();
-        }
-
         return _boxRepository.GetAllBoxes();
     }
     public Box CreateNewBox(PostBoxDTO dto)
@@ -38,10 +45,5 @@ public class ApplicationServiceBox : IBoxService
             throw new ValidationException(validation.ToString());
         }
         return _boxRepository.CreateNewBox(_mapper.Map<Box>(dto));
-    }
-
-    public List<Box> getAllBoxesFromDb()
-    {
-        return _boxRepository.GetAllBoxes();
     }
 }

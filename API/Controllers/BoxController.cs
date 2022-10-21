@@ -1,4 +1,4 @@
-using Application.Validators;
+using Application.DTOs;
 using Domain;
 using Domain.Interfaces;
 using FluentValidation;
@@ -18,16 +18,28 @@ public class BoxController : ControllerBase
     }
 
     [HttpGet]
-    public List<Box> GetAllProducts()
+    [Route("RebuildDb")]
+    public void RebuildDb()
     {
-        return _boxService.GetAllBoxes();
-        foreach (Box box in _boxService.GetAllBoxes())
+        _boxService.RebuildDb();
+    }
+
+    [HttpGet]
+    public ActionResult<List<Box>> GetAllBoxes()
+    {
+        try
         {
-            Console.WriteLine(box.Length);
+            var result = _boxService.GetAllBoxes();
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
         }
     }
 
     [HttpPost]
+    [Route("")]
     public ActionResult<Box> CreateNewBox(PostBoxDTO dto)
     {
         try

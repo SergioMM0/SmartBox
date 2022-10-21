@@ -1,13 +1,12 @@
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Domain;
 
 namespace Infrastructure;
 
-public class DbContext: Microsoft.EntityFrameworkCore.DbContext
+public class BoxDbContext: DbContext
 {
-    
-    public DbContext(DbContextOptions<DbContext> options, ServiceLifetime serviceLifetime) : base(options)
+    public BoxDbContext(DbContextOptions<BoxDbContext> opts) : base(opts)
     {
     }
 
@@ -18,5 +17,5 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
             .ValueGeneratedOnAdd();
     }
     
-    public DbSet<Box> Box { get; set; }
+    public DbSet<Box> BoxTable { get; set; }
 }
