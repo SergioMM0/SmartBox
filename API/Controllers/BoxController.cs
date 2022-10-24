@@ -30,6 +30,7 @@ public class BoxController : ControllerBase
         try
         {
             var result = _boxService.GetAllBoxes();
+            Console.WriteLine("Boxes list count :"+result.Count);
             return Ok(result);
         }
         catch (Exception e)

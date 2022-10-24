@@ -7,14 +7,13 @@ import {HttpService} from "../services/http.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+
   constructor(private http: HttpService) {
 
   }
 
   async ngOnInit() {
-    const boxes = await this.http.getProducts();
-    console.log(boxes);
-
-    //21:25
+    const boxes = await this.http.getAllBoxes();
+    console.log("Boxes retrieved: ",boxes);
   }
 }
