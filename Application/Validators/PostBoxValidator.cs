@@ -11,5 +11,6 @@ public class PostBoxValidator : AbstractValidator<PostBoxDTO>
         RuleFor(p => p.Price).GreaterThan(0);
         RuleFor(p => p.Length).GreaterThan(0);
         RuleFor(p => p.Width).GreaterThan(0);
+        RuleFor(p => p.Height).GreaterThan(0);
     }
 }
