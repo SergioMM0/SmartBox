@@ -1,6 +1,6 @@
 using Application.DTOs;
+using Application.Interfaces;
 using Domain;
-using Domain.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,13 +15,6 @@ public class BoxController : ControllerBase
     public BoxController(IBoxService service)
     {
         _boxService = service;
-    }
-
-    [HttpGet]
-    [Route("RebuildDb")]
-    public void RebuildDb()
-    {
-        _boxService.RebuildDb();
     }
 
     [HttpGet]

@@ -7,6 +7,7 @@ import {HttpService} from "../services/http.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  standardBoxes: any;
 
   constructor(private http: HttpService) {
 
@@ -14,6 +15,12 @@ export class AppComponent implements OnInit{
 
   async ngOnInit() {
     const boxes = await this.http.getAllBoxes();
-    console.log("Boxes retrieved: ",boxes);
+    console.log(boxes);
+
+    await this.getAllStandardBoxes();
+  }
+
+  async getAllStandardBoxes(){
+    this.standardBoxes = await this.http.getAllStandardBoxes();
   }
 }

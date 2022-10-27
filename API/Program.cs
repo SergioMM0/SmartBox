@@ -24,7 +24,7 @@ var mapper = new MapperConfiguration(config =>
 builder.Services.AddSingleton(mapper);
 
 //Conn to the DB
-builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
+builder.Services.AddDbContext<SmartBoxContext>(options => options.UseSqlite(
     "Data source=db.db"
 ));
 

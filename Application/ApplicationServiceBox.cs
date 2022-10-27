@@ -1,9 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
-using Application.Validators;
 using AutoMapper;
 using Domain;
-using Domain.Interfaces;
 using FluentValidation;
 using ValidationException = FluentValidation.ValidationException;
 
@@ -26,11 +24,6 @@ public class ApplicationServiceBox : IBoxService
         _boxRepository = repository;
         _postValidator = postValidator;
         _boxValidator = boxValidator;
-    }
-
-    public void RebuildDb()
-    {
-        _boxRepository.RebuildDb();
     }
 
     public List<Box> GetAllBoxes()

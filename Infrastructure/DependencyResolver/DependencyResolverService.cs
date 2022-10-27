@@ -8,5 +8,6 @@ public static class DependencyResolverService
     public static void RegisterInfrastructureLayer(IServiceCollection services)
     {
         services.AddScoped<IBoxRepository, BoxRepository>();
+        services.AddScoped<IDatabaseRepository, DatabaseRepository>();
     }
 }

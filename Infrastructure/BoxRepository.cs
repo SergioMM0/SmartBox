@@ -5,15 +5,10 @@ namespace Infrastructure;
 
 public class BoxRepository : IBoxRepository
 {
-    private readonly BoxDbContext _context;
-    public BoxRepository(BoxDbContext context)
+    private readonly SmartBoxContext _context;
+    public BoxRepository(SmartBoxContext context)
     {
         _context = context;
-    }
-    public void RebuildDb()
-    {
-        _context.Database.EnsureDeleted();
-        _context.Database.EnsureCreated();
     }
 
     public List<Box> GetAllBoxes()
