@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Domain;
 
 namespace Application.Interfaces;
@@ -5,7 +6,9 @@ namespace Application.Interfaces;
 public interface IUserService
 {
     public ICollection<User> GetAllUsers();
-    public User CreateNewUser(User user);
-    public User UpdateUser(User user);
-    public User DeleteUser(User user);
+    public User CreateNewUser(PostUserDTO dto);
+
+    public User GetUserById(int id);
+    public User UpdateUser(int id, User user);
+    public User DeleteUser(int id);
 }

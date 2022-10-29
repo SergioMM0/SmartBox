@@ -32,6 +32,11 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
         return user;
     }
+    
+    public User GetUserById(int id)
+    {
+        return _context.UserTable.Find(id) ?? throw new KeyNotFoundException();
+    }
 
     public User UpdateUser(User user)
     {
@@ -40,10 +45,11 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public User DeleteUser(User user)
+    public User DeleteUser(int id)
     {
-        _context.UserTable.Remove(user);
+        var userToDelete = _context.UserTable.Find(id) ?? throw new KeyNotFoundException();
+        _context.UserTable.Remove(userToDelete);
         _context.SaveChanges();
-        return user;
+        return userToDelete;
     }
 }

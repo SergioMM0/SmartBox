@@ -20,6 +20,9 @@ var mapper = new MapperConfiguration(config =>
 {
     //Any time we add another DTO we have to map it, so we add it down below :)
     config.CreateMap<PostBoxDTO, Box>();
+    config.CreateMap<PostUserDTO, User>();
+    config.CreateMap<PutUserDTO, User>();
+    config.CreateMap<User, PutUserDTO>();
 }).CreateMapper();
 builder.Services.AddSingleton(mapper);
 

@@ -25,6 +25,10 @@ public class SmartBoxContext: DbContext
         modelBuilder.Entity<User>()
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<User>()
+            .Property(f => f.UserType)
+            .HasDefaultValue(1); //Normal users will be identified with the value 1 && admins with 0 
         
         modelBuilder.Entity<Order>()
             .Property(f => f.Id)

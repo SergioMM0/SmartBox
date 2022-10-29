@@ -4,5 +4,5 @@ public class PostUserDTO
 {
     public string Name { get; set; }
     
-    public string UserType { get; set; }
+    public string Password { get; set; }
 }

@@ -2,11 +2,13 @@ using Application.DTOs;
 using Application.Interfaces;
 using Domain;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
+[AllowAnonymous]
 [Route("[controller]")]
 public class BoxController : ControllerBase
 {
