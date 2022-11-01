@@ -11,4 +11,6 @@ public class User
     public string? Address { get; set; }
     
     public int UserType { get; set; }
+    
+    public ICollection<Order> Orders { get; set; }
 }

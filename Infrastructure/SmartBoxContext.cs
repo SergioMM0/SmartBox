@@ -15,12 +15,16 @@ public class SmartBoxContext: DbContext
         modelBuilder.Entity<Box>()
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
+        
+        /*
         //One to many relationship
         modelBuilder.Entity<Box>()
             .HasOne(f => f.Order)
             .WithMany(f => f.BoxesOrdered)
             .HasForeignKey(f => f.OrderId)
             .OnDelete(DeleteBehavior.Cascade);
+            
+            */
         
         modelBuilder.Entity<User>()
             .Property(f => f.Id)
@@ -33,6 +37,21 @@ public class SmartBoxContext: DbContext
         modelBuilder.Entity<Order>()
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
+
+        //One to many relationship
+        modelBuilder.Entity<Order>()
+            .HasMany<Box>()
+            .WithOne(box => box.Order)
+            .HasForeignKey(o => o.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        //One to many relationship
+        modelBuilder.Entity<User>()
+            .HasMany<Order>()
+            .WithOne(o => o.User)
+            .HasForeignKey(u => u.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
     }
     
     public DbSet<Box> BoxTable { get; set; }

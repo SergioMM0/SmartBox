@@ -3,6 +3,7 @@ using Application.Interfaces;
 using AutoMapper;
 using Domain;
 using FluentValidation;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Application;
 

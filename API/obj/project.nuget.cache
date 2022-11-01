@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sEuRcK2rr1woJUuqufcEiuoYh653zx7ZYkHfXn8hsSKEpM5qTmTHlKNHm2cme4dyv8t8on7InRJeQg+MBkQCQw==",
+  "dgSpecHash": "TCxcZa6XOUrEsHFPQN9RnMFQ8TwVO1H4CX7xvIzmInpJKAzUr+7SnIRA+iy8Lbt3yj2Q5XH50J6rF2GIHC/1Kg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\SmartBox\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sergio M\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

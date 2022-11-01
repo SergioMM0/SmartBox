@@ -10,5 +10,6 @@ public static class DependencyResolverService
         services.AddScoped<IBoxService, ApplicationServiceBox>();
         services.AddScoped<IDatabaseService, DatabaseService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IOrderService, OrderService>();
     }
 }

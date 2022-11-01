@@ -10,5 +10,6 @@ public static class DependencyResolverService
         services.AddScoped<IBoxRepository, BoxRepository>();
         services.AddScoped<IDatabaseRepository, DatabaseRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
     }
 }

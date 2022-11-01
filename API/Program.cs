@@ -23,6 +23,7 @@ var mapper = new MapperConfiguration(config =>
     config.CreateMap<PostUserDTO, User>();
     config.CreateMap<PutUserDTO, User>();
     config.CreateMap<User, PutUserDTO>();
+    config.CreateMap<OrderDTO, Order>();
 }).CreateMapper();
 builder.Services.AddSingleton(mapper);
 
@@ -31,7 +32,7 @@ builder.Services.AddDbContext<SmartBoxContext>(options => options.UseSqlite(
     "Data source=db.db"
 ));
 
-//Registering Application layer and infrastructure layer with Depencency resolver
+//Registering Application layer and infrastructure layer with dependency resolver
 Application
     .DependencyResolver
     .DependencyResolverService
@@ -60,7 +61,6 @@ if (app.Environment.IsDevelopment())
         options.AllowAnyMethod();
     });
 }
-
 
 app.UseHttpsRedirection();
 
