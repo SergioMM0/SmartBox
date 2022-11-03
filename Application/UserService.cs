@@ -49,20 +49,20 @@ public class UserService : IUserService
         return _repository.GetUserById(id);
     }
 
-    public User UpdateUser(int id, User user)
+    public User UpdateUser(int id, PutUserDTO putUserDto)
     {
-        var dto = _mapper.Map<PutUserDTO>(user);
-        var validation = _putValidator.Validate(dto);
+        var validation = _putValidator.Validate(putUserDto);
         if (!validation.IsValid)
         {
             throw new ValidationException(validation.ToString());
         }
 
-        if (id != user.Id)
+        if (id != putUserDto.Id)
         {
             throw new ValidationException("ID in body and route are different");
         }
-        return _repository.UpdateUser(user);
+        
+        return _repository.UpdateUser(_mapper.Map<User>(putUserDto));
     }
 
     public User DeleteUser(int id)

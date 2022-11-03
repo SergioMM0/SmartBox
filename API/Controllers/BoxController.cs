@@ -52,4 +52,20 @@ public class BoxController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public ActionResult<Box> DeleteBox(int id)
+    {
+        try
+        {
+            return Accepted(_boxService.DeleteBox(id));
+        }catch (KeyNotFoundException e) 
+        {
+            return NotFound("Box with ID:" + id + " not found.");
+        } catch (Exception e)
+        {
+            return StatusCode(500, e.ToString());
+        }
+    }
 }

@@ -8,7 +8,7 @@ public class PutUserValidator : AbstractValidator<PutUserDTO>
 {
     public PutUserValidator()
     {
-        RuleFor(p => p.id).NotEmpty().NotNull();
+        RuleFor(p => p.Id).NotEmpty().NotNull();
         RuleFor(p => p.Name).NotEmpty().NotNull();
         When(u => u.Password is { Length: > 0 }, () =>
         {

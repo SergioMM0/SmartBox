@@ -37,21 +37,20 @@ public class SmartBoxContext: DbContext
         modelBuilder.Entity<Order>()
             .Property(f => f.Id)
             .ValueGeneratedOnAdd();
-
-        //One to many relationship
+        
+        //One to many relationship between Order and User (User can have many Orders)
         modelBuilder.Entity<Order>()
-            .HasMany<Box>()
-            .WithOne(box => box.Order)
-            .HasForeignKey(o => o.OrderId)
+            .HasOne(o => o.User)
+            .WithMany(u => u.Orders)
+            .HasForeignKey(s => s.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        //One to many relationship
-        modelBuilder.Entity<User>()
-            .HasMany<Order>()
-            .WithOne(o => o.User)
-            .HasForeignKey(u => u.UserId)
+        //One to many relationship between Box and Order (Order can have many boxes)
+        modelBuilder.Entity<Box>()
+            .HasOne(b => b.Order)
+            .WithMany(o => o.BoxesOrdered)
+            .HasForeignKey(b => b.OrderId)
             .OnDelete(DeleteBehavior.Cascade);
-
     }
     
     public DbSet<Box> BoxTable { get; set; }

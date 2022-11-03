@@ -54,11 +54,11 @@ public class UserController : ControllerBase
 
     [HttpPut]
     [Route("{id}")]//http://www.misco.es/user/2
-    public ActionResult<User> UpdateUser([FromRoute]int id, [FromBody]User user)
+    public ActionResult<User> UpdateUser([FromRoute]int id, [FromBody]PutUserDTO putUserDto)
     {
         try
         {
-            return Ok(_service.UpdateUser(id, user));
+            return Ok(_service.UpdateUser(id, putUserDto));
         }
         catch (ValidationException validationException)
         {
@@ -96,7 +96,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            return Ok(_service.DeleteUser(id));
+            return Accepted(_service.DeleteUser(id));
         } catch (KeyNotFoundException e) 
         {
             return NotFound("User with ID:" + id + " not found.");

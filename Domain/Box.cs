@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain;
 
 public class Box
@@ -9,7 +11,6 @@ public class Box
     public double Width { get; set; } 
     
     public double Height { get; set; }
-    
     public int? OrderId { get; set; }
     
     public Order? Order { get; set; }

@@ -26,7 +26,9 @@ public class OrderRepository : IOrderRepository
 
     public Order UpdateOrder(Order order)
     {
-        _context.OrdersTable.Update(order);
+        var orderToUpdate = _context.OrdersTable.Find(order.Id) ?? throw new KeyNotFoundException();
+        orderToUpdate.DeliveryAddress = order.DeliveryAddress;
+        _context.OrdersTable.Attach(orderToUpdate);
         _context.SaveChanges();
         return order;
     }

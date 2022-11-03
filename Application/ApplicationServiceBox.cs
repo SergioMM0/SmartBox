@@ -39,4 +39,9 @@ public class ApplicationServiceBox : IBoxService
         }
         return _boxRepository.CreateNewBox(_mapper.Map<Box>(dto));
     }
+
+    public Box DeleteBox(int id)
+    {
+        return _boxRepository.DeleteBox(id);
+    }
 }

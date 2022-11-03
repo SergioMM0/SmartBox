@@ -22,4 +22,12 @@ public class BoxRepository : IBoxRepository
         _context.SaveChanges();
         return box;
     }
+
+    public Box DeleteBox(int id)
+    {
+        var boxToDelete = _context.BoxTable.Find(id) ?? throw new KeyNotFoundException();
+        _context.BoxTable.Remove(boxToDelete);
+        _context.SaveChanges();
+        return boxToDelete;
+    }
 }

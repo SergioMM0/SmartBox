@@ -8,15 +8,14 @@ import {HttpService} from "../services/http.service";
 })
 export class AppComponent implements OnInit{
   standardBoxes: any;
+  columnsToDisplay = ['ID', 'Material', 'Price', 'Length', 'Width', 'Height'];
+  deliveryAddress: any;
 
   constructor(private http: HttpService) {
 
   }
 
   async ngOnInit() {
-    const boxes = await this.http.getAllBoxes();
-    console.log(boxes);
-
     await this.getAllStandardBoxes();
   }
 

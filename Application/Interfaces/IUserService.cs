@@ -9,6 +9,6 @@ public interface IUserService
     public User CreateNewUser(PostUserDTO dto);
 
     public User GetUserById(int id);
-    public User UpdateUser(int id, User user);
+    public User UpdateUser(int id, PutUserDTO putUserDto);
     public User DeleteUser(int id);
 }

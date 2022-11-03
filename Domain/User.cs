@@ -8,9 +8,9 @@ public class User
     
     public string Password { get; set; }
     
-    public string? Address { get; set; }
+    public string Address { get; set; }
     
     public int UserType { get; set; }
     
-    public ICollection<Order> Orders { get; set; }
+    public virtual List<Order> Orders { get; set; }
 }

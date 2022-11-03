@@ -16,6 +16,7 @@ public class UserRepository : IUserRepository
     {
         ICollection<User> allUsers = _context.UserTable.ToList();
         ICollection<User> onlyUsers = new List<User>();
+        
         foreach (var user in allUsers)
         {
             if (user.UserType == 1)
@@ -40,7 +41,11 @@ public class UserRepository : IUserRepository
 
     public User UpdateUser(User user)
     {
-        _context.UserTable.Update(user);
+        var userToUpdate = _context.UserTable.Find(user.Id) ?? throw new KeyNotFoundException();
+        userToUpdate.Name = user.Name;
+        userToUpdate.Address = user.Address;
+        userToUpdate.Password = user.Password;
+        _context.UserTable.Attach(userToUpdate);
         _context.SaveChanges();
         return user;
     }
