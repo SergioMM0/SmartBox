@@ -69,4 +69,15 @@ public class UserService : IUserService
     {
         return _repository.DeleteUser(id);
     }
+
+    public User AuthenticateUser(PostUserDTO dto)
+    {
+        var validation = _postValidator.Validate(dto);
+        if (!validation.IsValid)
+        {
+            throw new ValidationException(validation.ToString());
+        }
+
+        return _repository.AuthenticateUser(_mapper.Map<User>(dto));
+    }
 }

@@ -10,8 +10,12 @@ export class AppComponent implements OnInit{
   standardBoxes: any;
   columnsToDisplay = ['ID', 'Material', 'Price', 'Length', 'Width', 'Height'];
   deliveryAddress: any;
+  loginSuccessful: boolean = false;
+  userName: any;
+  password: any;
+  user : any;
 
-  constructor(private http: HttpService) {
+  constructor(public http: HttpService) {
 
   }
 
@@ -21,5 +25,25 @@ export class AppComponent implements OnInit{
 
   async getAllStandardBoxes(){
     this.standardBoxes = await this.http.getAllStandardBoxes();
+  }
+
+  async login(){
+    let dto = {
+      username: this.userName,
+      password: this.password
+    }
+    this.user = await this.http.login(dto);
+    console.log(this.user);
+    this.loginSuccessful = true;
+  }
+
+  async register(){
+    let dto= {
+      username: this.userName,
+      password: this.password
+    }
+    this.user = await this.http.register(dto);
+    console.log(this.user);
+    this.loginSuccessful = true;
   }
 }

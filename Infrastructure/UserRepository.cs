@@ -43,7 +43,6 @@ public class UserRepository : IUserRepository
     {
         var userToUpdate = _context.UserTable.Find(user.Id) ?? throw new KeyNotFoundException();
         userToUpdate.Name = user.Name;
-        userToUpdate.Address = user.Address;
         userToUpdate.Password = user.Password;
         _context.UserTable.Attach(userToUpdate);
         _context.SaveChanges();
@@ -56,5 +55,16 @@ public class UserRepository : IUserRepository
         _context.UserTable.Remove(userToDelete);
         _context.SaveChanges();
         return userToDelete;
+    }
+
+    public User AuthenticateUser(User user)
+    {
+        var userAuth = _context.UserTable.FirstOrDefault(u => u.Name == user.Name) ?? throw new KeyNotFoundException();
+        if (userAuth.Password == user.Password)
+        {
+            return userAuth;
+        }
+
+        throw new Exception("User and password doesn't match");
     }
 }

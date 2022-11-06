@@ -10,4 +10,5 @@ public interface IUserRepository
     public User UpdateUser(User user);
     public User DeleteUser(int id);
 
+    public User AuthenticateUser(User user);
 }

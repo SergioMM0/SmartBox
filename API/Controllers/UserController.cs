@@ -34,7 +34,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    [Route("")]
+    [Route("register")]
     public ActionResult<User> CreateNewUser(PostUserDTO dto)
     {
         try
@@ -67,6 +67,23 @@ public class UserController : ControllerBase
         catch (KeyNotFoundException e) 
         {
             return NotFound("User with ID:" + id + " not found.");
+        } catch (Exception e)
+        {
+            return StatusCode(500, e.ToString());
+        }
+    }
+
+    [HttpGet]
+    [Route("login")]
+    public ActionResult<User> AuthenticateUser(PostUserDTO dto)
+    {
+        try
+        {
+            return Ok(_service.AuthenticateUser(dto));
+        }
+        catch (KeyNotFoundException e) 
+        {
+            return NotFound("User not found in the system");
         } catch (Exception e)
         {
             return StatusCode(500, e.ToString());

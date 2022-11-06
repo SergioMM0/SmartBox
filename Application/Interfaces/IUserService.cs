@@ -11,4 +11,5 @@ public interface IUserService
     public User GetUserById(int id);
     public User UpdateUser(int id, PutUserDTO putUserDto);
     public User DeleteUser(int id);
+    public User AuthenticateUser(PostUserDTO dto);
 }

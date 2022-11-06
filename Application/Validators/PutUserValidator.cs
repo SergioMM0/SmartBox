@@ -14,9 +14,5 @@ public class PutUserValidator : AbstractValidator<PutUserDTO>
         {
             RuleFor(p => p.Password).NotNull();
         });
-        When(u => u.Address is { Length: > 0 }, () =>
-        {
-            RuleFor(p => p.Address).NotNull();
-        });
     }
 }
